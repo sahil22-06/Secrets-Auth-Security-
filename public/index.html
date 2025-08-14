@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets - Secure Authentication</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-shield-alt"></i> Secrets</h1>
+            <p>Your secure space for confidential information</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Registration Form -->
+            <div id="registrationForm" class="form-container">
+                <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <input type="text" id="regName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="regPassword" name="password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('regPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-requirements">
+                            <p>Password must contain:</p>
+                            <ul>
+                                <li id="reqLowercase">❌ At least one lowercase letter</li>
+                                <li id="reqUppercase">❌ At least one uppercase letter</li>
+                                <li id="reqNumber">❌ At least one number</li>
+                                <li id="reqLength">❌ 6-8 characters long</li>
+                                <li id="reqSpecial">✅ Special characters allowed (@#$%^&*!)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                <p class="form-footer">
+                    Already have an account? 
+                    <a href="#" onclick="showLogin()" class="nav-link">Sign In</a>
+                </p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="form-container hidden">
+                <h2><i class="fas fa-sign-in-alt"></i> Sign In</h2>
+                <form id="signinForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+                <p class="form-footer">
+                    Don't have an account? 
+                    <a href="#" onclick="showRegistration()" class="nav-link">Create One</a>
+                </p>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="dashboard hidden">
+                <div class="dashboard-header">
+                    <h2><i class="fas fa-user-circle"></i> Welcome, <span id="userName"></span>!</h2>
+                    <button onclick="logout()" class="btn btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                
+                <div class="user-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> Account Information</h3>
+                        <div class="info-item">
+                            <strong>Name:</strong> <span id="dashboardName"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Email:</strong> <span id="dashboardEmail"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Member Since:</strong> <span id="dashboardDate"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="security-card">
+                        <h3><i class="fas fa-shield-alt"></i> Security Status</h3>
+                        <div class="security-item">
+                            <i class="fas fa-check-circle text-success"></i> Account Verified
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-check-circle text-success"></i> Secure Session Active
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-check-circle text-success"></i> Password Securely Hashed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Processing...</p>
+            </div>
+        </main>
+
+        <!-- Alert Messages -->
+        <div id="alertContainer" class="alert-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
